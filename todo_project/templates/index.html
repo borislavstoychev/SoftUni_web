@@ -1,94 +1,37 @@
 {% load static %}
 
 <html lang="en">
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
 </head>
-<style>
-    h1 {
-        margin: 5px;
-        text-align: center;
-        padding: 5px;
-    }
-
-    h2 {
-        text-align: center;
-        text-decoration: underline;
-    }
-
-    div.done {
-        color: green;
-        font-weight: bold;
-    }
-
-    div.open {
-        color: red;
-        font-weight: bold;
-    }
-
-    div.todo {
-        display: block;
-        background: white;
-        border: 2px solid white;
-        border-radius: 10px;
-        margin: 5px;
-        text-align: center;
-    }
-
-    div.todo p {
-        font-size: 20px;
-        font-weight: bold;
-        text-decoration: underline;
-    }
-
-    div.todo div.description {
-        padding: 10px;
-    }
-
-    div.container {
-        background: greenyellow;
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-        padding: 10px;
-    }
-</style>
 <body>
-    <h1>My Todo List</h1>
+    <h1 class="header">My Todo List</h1>
     <form method="post" action="/todos-add/">
         {% csrf_token %}
-        <label>Title
-            <input type="text" name="text"/>
+        <label class="label">
+            <label><h3> Title </h3>
+            <p><input type="text" name="text" required/></p>
         </label>
-        <label>Description
-            <textarea name="description"></textarea>
+        <label><h3>Description</h3>
+            <p><textarea class="textarea" name="description" required></textarea></p>
         </label>
-        <label>Owner
-            <input type="text" name="owner"/>
+        <label><h3>Owner</h3>
+            <P><input type="text" name="owner" required/></p>
         </label>
-        <button>Add Todo</button>
-    </form>
-        <form method="post" action="/todos-dell/">
-        {% csrf_token %}
-        <label>Title
-            <input type="text" name="text"/>
+        <p><button class="button">Add new task...</button></p>
         </label>
-        <label>Description
-            <textarea name="description"></textarea>
-        </label>
-        <label>Owner
-            <input type="text" name="owner"/>
-        </label>
-        <button>Dell Todo</button>
     </form>
     {% if todos %}
         <div class="container">
         {% for todo in todos %}
         <div class="todo">
-        <p>{{ todo.title }}</p>
-        <div class="description">{{ todo.description }}</div>
+        <p>Title: {{ todo.title }}</p>
+        <p>{{ todo.owner }}</p>
+        <p>Start date: {{ todo.stat_date }}</p>
+        <div class="description">Description: {{ todo.description }}</div>
         <form method="post" action="/todo-change-state/{{ todo.id }}">
         {% csrf_token %}
         {% if todo.is_done %}
@@ -96,13 +39,15 @@
             <label>
                 <input type="hidden" name="is_done" value="false" />
             </label>
-            <button>Change</button>
+            <button class="button2">Change</button>
+            <button ><a class="button1" href="/todos-dell/{{ todo.id }}">Dell</a></button>
         {% else %}
             <div class="open">NOT DONE</div>
             <label>
                 <input type="hidden" name="is_done" value="true" />
             </label>
-            <button>Change</button>
+            <button class="button2">Change</button>
+            <button ><a class="button1" href="/todos-dell/{{ todo.id }}">Dell</a></button>
         {% endif %}
         </form>
 
@@ -110,7 +55,7 @@
         {% endfor %}
         </div>
     {% else %}
-        <h2>No TODOS</h2>
+        <h2 class="header">It`s Empty</h2>
     {% endif %}
 </body>
 </html>

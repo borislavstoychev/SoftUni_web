@@ -7,7 +7,7 @@ class Person(models.Model):
     name = models.CharField(max_length=30)
 
     def __str__(self):
-        return f'{self.id}: {self.name}'
+        return f'Person: {self.name}'
 
     class Meta:
         verbose_name_plural = 'people'
@@ -33,3 +33,4 @@ class Todo(models.Model):
     is_done = models.BooleanField(default=False)
     owner = models.ForeignKey(Person, on_delete=models.CASCADE, null=True, )
     categories = models.ManyToManyField(Category)
+    stat_date = models.DateField(auto_now=True)

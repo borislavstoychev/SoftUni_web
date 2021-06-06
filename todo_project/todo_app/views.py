@@ -27,14 +27,9 @@ def create_todo(request):
     return redirect('/')
 
 
-def dell_todo(request):
-    text = request.POST['text']
-    description = request.POST['description']
-    owner_name = request.POST['owner']
-    owner = Person.objects.filter(name=owner_name).first()
-    todo = Todo.objects.filter(title=text).first()
-    if owner and todo:
-        todo.delete()
+def dell_todo(request, pk):
+    todo = Todo.objects.get(pk=pk)
+    todo.delete()
     return redirect('/')
 
 
