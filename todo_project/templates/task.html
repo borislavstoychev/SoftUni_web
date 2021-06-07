@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new task</title>
+</head>
+<body>
+ <form method="post" action="/todos-add/">
+        {% csrf_token %}
+        <label class="label">
+            <label><h3> Title </h3>
+            <p><input type="text" name="text" required/></p>
+        </label>
+        <label><h3>Description</h3>
+            <p><textarea class="textarea" name="description" required></textarea></p>
+        </label>
+        <label><h3>Owner</h3>
+            <P><input type="text" name="owner" required/></p>
+        </label>
+        <p><button class="button">Add new task...</button></p>
+        </label>
+    </form>
+</body>
+</html>

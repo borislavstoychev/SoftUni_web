@@ -6,32 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
+    <button ><a class="button3" href="/add-tasks/">Add new task...</a></button>
 </head>
 <body>
     <h1 class="header">My Todo List</h1>
-    <form method="post" action="/todos-add/">
-        {% csrf_token %}
-        <label class="label">
-            <label><h3> Title </h3>
-            <p><input type="text" name="text" required/></p>
-        </label>
-        <label><h3>Description</h3>
-            <p><textarea class="textarea" name="description" required></textarea></p>
-        </label>
-        <label><h3>Owner</h3>
-            <P><input type="text" name="owner" required/></p>
-        </label>
-        <p><button class="button">Add new task...</button></p>
-        </label>
-    </form>
     {% if todos %}
         <div class="container">
         {% for todo in todos %}
         <div class="todo">
-        <p>Title: {{ todo.title }}</p>
-        <p>{{ todo.owner }}</p>
-        <p>Start date: {{ todo.stat_date }}</p>
-        <div class="description">Description: {{ todo.description }}</div>
+        <h2 class="todo-title collapse-toggle">Title: {{ todo.title }}</h2>
+        <h3 class="collapsable">{{ todo.owner }}</h3>
+        <h3 class="collapsable">Start date: {{ todo.stat_date }}</h3>
+        <h4>
+            <p class="todo-description collapsable">
+                Description: {{ todo.description }}
+            </p>
+        </h4>
         <form method="post" action="/todo-change-state/{{ todo.id }}">
         {% csrf_token %}
         {% if todo.is_done %}
@@ -57,5 +47,6 @@
     {% else %}
         <h2 class="header">It`s Empty</h2>
     {% endif %}
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

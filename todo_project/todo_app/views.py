@@ -10,6 +10,10 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
+def tasks(req):
+    return render(req, 'task.html')
+
+
 def create_todo(request):
     text = request.POST['text']
     description = request.POST['description']
