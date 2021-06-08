@@ -12,11 +12,7 @@
     <h1 class="header">My Todo List</h1>
     <div>
     <h1 class="header">
-     {% if pk %}
-        <form method="post" action="{% url 'edit task' pk%}">
-     {% else %}
          <form method="post" action="{% url 'creat task'%}">
-     {% endif %}
         {% csrf_token %}
         {{ form_action.title.lable_tag}}
         <small id="title_help" class="form-text text-muted">Enter task title</small>

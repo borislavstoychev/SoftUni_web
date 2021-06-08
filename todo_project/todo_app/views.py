@@ -22,20 +22,8 @@ def edit_task(request, pk):
     todo = Todo.objects.get(pk=pk)
     if request.method == 'GET':
         form = TodoForm(initial=todo.__dict__)
+        todo.delete()
         return index(request, form, 'edit task', pk=pk)
-    else:
-        form = TodoForm(request.POST)
-        if form.is_valid():
-            todo.title = form.cleaned_data['title']
-            todo.description = form.cleaned_data['description']
-            owner_name = form.cleaned_data['owner']
-            owner = Person.objects.filter(name=owner_name).first()
-            if not owner:
-                owner = Person(name=owner_name)
-                owner.save()
-            todo.owner = owner
-            todo.save()
-        return redirect('/')
 
 
 def create_todo(request):
