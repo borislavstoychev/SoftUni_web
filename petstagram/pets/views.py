@@ -13,6 +13,7 @@ def pet_all(request):
 
 def pet_detail(request, pk):
     pet = Pet.objects.get(pk=pk)
+    pet.likes_count = pet.like_set.count()
     context = {
         'pet': pet,
     }
@@ -22,7 +23,7 @@ def pet_detail(request, pk):
 def like_pet(request, pk):
 
     pet = Pet.objects.get(pk=pk)
-    like = Like(test=str(pk))
+    like = Like(pet=pet)
     like.pet = pet
     like.save()
     return redirect('pet details', pk)
