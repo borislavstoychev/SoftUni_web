@@ -37,7 +37,9 @@ Now, we need to do some configurations. We will start with configuring our templ
 ![petstagram1](https://user-images.githubusercontent.com/67734870/120035639-98746100-c007-11eb-80f7-f1b9a7ed6727.png)
 ![petstagram1](https://user-images.githubusercontent.com/67734870/120035746-bb067a00-c007-11eb-94cd-75ce37fbd100.png)
 Then, we need to add the app we just created in the INSTALLED_APPS
+
 ![petstagram1](https://user-images.githubusercontent.com/67734870/120035852-ebe6af00-c007-11eb-8d2d-c511bbbb1581.png)
+
 ### Migrations and Starting the Project
 ![petstagram1](https://user-images.githubusercontent.com/67734870/120035969-146ea900-c008-11eb-95c6-a32c8058ed41.png)
 ![petstagram1](https://user-images.githubusercontent.com/67734870/120036025-2cdec380-c008-11eb-841f-401a74a26d5a.png)
@@ -85,7 +87,9 @@ The next step is to make migrations to the database, since we created some new m
 Let us also create a superuser, so we can create some pets using the django admin
 ## Create Pets
 Create some pets, so we can test our views that we will create later
+
 ![1](https://user-images.githubusercontent.com/67734870/121063918-9791bb00-c7cf-11eb-96b6-5a265c7dd020.png)
+
 ## Creating Some Views
 ### Let us now start creating some of our views. We will create the pet_all view and the pet_detail view
     • 'localhost:8000/pets/' - list all the pets (using the pet_all view and a template 'pets/pet_list.html')
