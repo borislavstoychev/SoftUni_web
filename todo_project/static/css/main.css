@@ -38,15 +38,11 @@ h1 {
         padding: 10px;
     }
 
-    div.container {
+    div.container-xxl {
         width: 100%;
         background: teal;
-        display: inline-block;
-        flex-direction: column;
-        margin: 0 auto;
-        padding: 30px;
-        border-radius: 10px;
-        /*float: right;*/
+        margin: auto;
+        padding: 10px;
     }
     .header {
   width: 100%;
@@ -60,25 +56,25 @@ h1 {
   /*float: right;*/
 }
 
-    input[type=text]:focus {
-  border: 3px solid #555;
-  border-radius: 12px;
-  display: inline-flex;
-  padding: 5px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 100%;
-  width: 50%;
-}
-    .textarea {
-	border: 3px solid #555;
-    border-radius: 12px;
-    display: inline-flex;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    width: 50%;
-}
+/*    input[type=text]:focus {*/
+/*  border: 3px solid #555;*/
+/*  border-radius: 12px;*/
+/*  display: inline-flex;*/
+/*  padding: 5px;*/
+/*  text-align: center;*/
+/*  text-decoration: none;*/
+/*  font-size: 100%;*/
+/*  width: 50%;*/
+/*}*/
+/*    .textarea {*/
+/*	border: 3px solid #555;*/
+/*    border-radius: 12px;*/
+/*    display: inline-flex;*/
+/*    padding: 20px;*/
+/*    text-align: center;*/
+/*    text-decoration: none;*/
+/*    width: 50%;*/
+/*}*/
      .dataset {
 	border: 3px solid #555;
     border-radius: 12px;
@@ -133,3 +129,12 @@ h1 {
     .collapsed.collapsable {
         display: none;
     }
+    input[type=text]:focus, textarea {
+ width: 100%;
+ padding: 12px 20px;
+ margin: 8px 0;
+ display: inline-block;
+ border-radius: 10px;
+
+
+}

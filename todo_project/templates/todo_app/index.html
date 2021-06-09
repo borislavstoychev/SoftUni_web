@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<h1 class="header">My Todo List</h1>
+{% if todos %}
+    <div class="container-xxl">
+        {% for todo in todos %}
+            <div class="todo">
+                <p>{{ todo.title }}</p>
+                <div class="description">{{ todo.description }}</div>
+                <a class="btn btn-primary" href='update/{{ todo.id }}'>Update</a>
+                <a class="btn btn-danger" href='delete/{{ todo.id }}'>Delete</a>
+            </div>
+        {% endfor %}
+        <a class="btn btn-primary" href="{% url 'create_todo' %}">Create</a>
+    </div>
+{% else %}
+    <h2>No TODOs</h2>
+    <h2>Go to <a href={% url "create_todo" %}>/createTodo</a> to create a new TODO</h2>
+{% endif %}
+</body>
+</html>
