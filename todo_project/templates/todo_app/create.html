@@ -13,12 +13,14 @@
 <body>
 <h1 class="header">Fill out the form!</h1>
 <div class="container">
+    <h1>
     <form method="post" class="form-message">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form }}
         <input type="submit" class="btn btn-primary" value='Submit'>
         <a class="btn btn-primary" href="{% url 'main' %}">Return</a>
     </form>
+    </h1>
 </div>
 </body>
 </html>

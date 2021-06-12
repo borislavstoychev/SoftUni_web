@@ -1,5 +1,5 @@
 from django.core.validators import EmailValidator
-from django.forms import Form, CharField, TextInput, HiddenInput, Textarea, ValidationError, IntegerField, NumberInput, \
+from django.forms import Form, CharField, HiddenInput, Textarea, ValidationError, IntegerField, NumberInput, \
     EmailField, EmailInput, PasswordInput
 import re
 
@@ -25,9 +25,9 @@ def clean_bot_catcher(value):
 
 
 class TodoForm(Form):
-    title = CharField(max_length=20, validators=[check_for_name])
-    description = CharField(widget=Textarea)
-    owner = CharField(max_length=100)
+    title = CharField(max_length=20, validators=[check_for_name], label='Enter task title')
+    description = CharField(widget=Textarea, label='Enter task description')
+    owner = CharField(max_length=100, label='Enter task owner')
 
 
 class FormName(Form):

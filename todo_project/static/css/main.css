@@ -1,7 +1,10 @@
 h1 {
-        margin: 5px;
+        margin: 0 auto;
         text-align: center;
         padding: 5px;
+        background: teal;
+        border-radius: 10px;
+        color: white;
     }
 
     h2 {
@@ -41,20 +44,22 @@ h1 {
     div.container-xxl {
         width: 100%;
         background: teal;
-        margin: auto;
-        padding: 10px;
+        margin: 0 auto;
+        padding: 5px;
+        font-size: 20px;
+        border-radius: 10px;
     }
-    .header {
-  width: 100%;
-  padding: 30px;
-  margin: 0 auto;
-  text-align: center;
-  background: teal;
-  color: white;
-  font-size: 30px;
-  border-radius: 12px;
-  /*float: right;*/
-}
+/*    .header {*/
+/*  width: 100%;*/
+/*  padding: 30px;*/
+/*  margin: 0 auto;*/
+/*  text-align: center;*/
+/*  background: teal;*/
+/*  color: white;*/
+/*  font-size: 30px;*/
+/*  border-radius: 12px;*/
+/*  float: right;*/
+/*}*/
 
 /*    input[type=text]:focus {*/
 /*  border: 3px solid #555;*/
@@ -129,12 +134,11 @@ h1 {
     .collapsed.collapsable {
         display: none;
     }
-    input[type=text]:focus, textarea {
+    input, textarea {
  width: 100%;
  padding: 12px 20px;
  margin: 8px 0;
  display: inline-block;
  border-radius: 10px;
-
-
+font-size: 30px;
 }

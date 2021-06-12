@@ -16,7 +16,7 @@ def index(request, form=None, form_action='create task', pk=None):
         'pk': pk,
     }
 
-    return render(request, 'todo_app/index.html', context)
+    return render(request, 'index.html', context)
 
 
 def edit_task(request, pk):
@@ -43,7 +43,6 @@ def edit_task(request, pk):
 def create_todo(request):
     form = TodoForm(request.POST)
     if not form.is_valid():
-        form = TodoForm(field_order=[CharField(), CharField(widget=Textarea), CharField(max_length=100)])
         return render(request, 'todo_app/create.html', {'form': form})
     text = form.cleaned_data['title']
     description = form.cleaned_data['description']

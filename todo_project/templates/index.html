@@ -9,42 +9,42 @@
 {#    <button ><a class="button3" href="/add-tasks/">Add new task...</a></button>#}
 </head>
 <body>
-    <h1 class="header">My Todo List</h1>
+    <h1>My Todo List</h1>
     <div>
-    <h1 class="header">
+    <h1>
          <form method="post" action="{% url 'creat task'%}">
         {% csrf_token %}
-        {{ form_action.title.lable_tag}}
-        <small id="title_help" class="form-text text-muted">Enter task title</small>
-        <label>
-        <input type="text"
-                       name="{{ todo_form.title.html_name }}"
-                       id="{{ todo_form.title.id_for_label }}"
-                       aria-describedby="title_help"
-                       value="{{ todo_form.title.value }}"/>
-        </label>
-        <small id="title_help" class="form-text text-muted">Enter task description</small>
-        <label>
-        <input type="text"
-                       name="{{ todo_form.description.html_name }}"
-                       id="{{ todo_form.description.id_for_label }}"
-                       aria-describedby="description_help"
-                       value="{{ todo_form.description.value }}"/>
-        </label>
-        <small id="title_help" class="form-text text-muted">Enter task owner</small>
-        <label>
-        <input type="text"
-                       name="{{ todo_form.owner.html_name }}"
-                       id="{{ todo_form.owner.id_for_label }}"
-                       aria-describedby="owner_help"
-                       value="{{ todo_form.owner.value }}"/>
-        </label>
+{#        {{ todo_form.as_p}}#}
+{#        <small id="title_help" class="form-text text-muted">Enter task title</small>#}
+{#        <label>#}
+{#        <input type="text"#}
+{#                       name="{{ todo_form.title.html_name }}"#}
+{#                       id="{{ todo_form.title.id_for_label }}"#}
+{#                       aria-describedby="title_help"#}
+{#                       value="{{ todo_form.title.value }}"/>#}
+{#        </label>#}
+{#        <small id="title_help" class="form-text text-muted">Enter task description</small>#}
+{#        <label>#}
+{#        <input type="text"#}
+{#                       name="{{ todo_form.description.html_name }}"#}
+{#                       id="{{ todo_form.description.id_for_label }}"#}
+{#                       aria-describedby="description_help"#}
+{#                       value="{{ todo_form.description.value }}"/>#}
+{#        </label>#}
+{#        <small id="title_help" class="form-text text-muted">Enter task owner</small>#}
+{#        <label>#}
+{#        <input type="text"#}
+{#                       name="{{ todo_form.owner.html_name }}"#}
+{#                       id="{{ todo_form.owner.id_for_label }}"#}
+{#                       aria-describedby="owner_help"#}
+{#                       value="{{ todo_form.owner.value }}"/>#}
+{#        </label>#}
     <button class="button3">Creat new task...</button>
     </form>
     </h1>
     </div>
     {% if todos %}
-        <div class="container">
+        <div class="container-xxl">
         {% for todo in todos %}
         <div class="todo">
         <h2 class="todo-title collapse-toggle">Title: {{ todo.title }}</h2>
