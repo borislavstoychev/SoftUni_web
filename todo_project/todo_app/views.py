@@ -22,42 +22,72 @@ def index(request, form=None, form_action='create task', pk=None):
 def edit_task(request, pk):
     todo = Todo.objects.get(pk=pk)
     if request.method == 'GET':
-        form = TodoForm(initial=todo.__dict__)
+        form = TodoForm(initial={"title": todo.title, "description": todo.description, "owner": todo.owner.name})
         return render(request, "todo_app/edit.html", {'form': form})
     else:
         form = TodoForm(request.POST)
-        if not form.is_valid():
-            render(request, "todo_app/edit.html", {'form': form})
-        todo.text = form.cleaned_data['title']
-        todo.description = form.cleaned_data['description']
-        owner_name = form.cleaned_data['owner']
-        owner = Person.objects.filter(name=owner_name).first()
-        if not owner:
-            owner = Person(name=owner_name)
-            owner.save()
-        todo.owner = owner
-        todo.save()
-        return render(request, 'todo_app/create.html', {"form": form})
+        if form.is_valid():
+            todo.title = form.cleaned_data['title']
+            todo.description = form.cleaned_data['description']
+            owner_name = form.cleaned_data['owner']
+            owner = Person.objects.filter(name=owner_name).first()
+            if not owner:
+                owner = Person(name=owner_name)
+                owner.save()
+            todo.owner = owner
+            todo.save()
+            return redirect('/')
+        return render(request, "todo_app/edit.html", {'form': form})
 
 
 def create_todo(request):
-    form = TodoForm(request.POST)
-    if not form.is_valid():
+    if request.method == "GET":
+        return render(request, 'todo_app/create.html', {'form': TodoForm()})
+    else:
+        form = TodoForm(request.POST)
+        if form.is_valid():
+            text = form.cleaned_data['title']
+            description = form.cleaned_data['description']
+            owner_name = form.cleaned_data['owner']
+            owner = Person.objects.filter(name=owner_name).first()
+            if not owner:
+                owner = Person(name=owner_name)
+                owner.save()
+            todo = Todo(
+                title=text,
+                description=description,
+                owner=owner,
+            )
+            todo.save()
+            return redirect("/")
         return render(request, 'todo_app/create.html', {'form': form})
-    text = form.cleaned_data['title']
-    description = form.cleaned_data['description']
-    owner_name = form.cleaned_data['owner']
-    owner = Person.objects.filter(name=owner_name).first()
-    if not owner:
-        owner = Person(name=owner_name)
-        owner.save()
-    todo = Todo(
-        title=text,
-        description=description,
-        owner=owner,
-    )
-    todo.save()
-    return redirect("/")
+
+
+# def persist(req, todo, template_name):
+#     if req.method == "GET":
+#         form = TodoForm(initial={"title": todo.title, "description": todo.description, "owner": todo.owner.name})
+#         return render(req, f'todo_app/{template_name}.html', {'form': form})
+#     form = TodoForm(req.POST)
+#     if form.is_valid():
+#         todo.text = form.cleaned_data['title']
+#         todo.description = form.cleaned_data['description']
+#         owner_name = form.cleaned_data['owner']
+#         owner = Person.objects.filter(name=owner_name).first()
+#         if not owner:
+#             owner = Person(name=owner_name)
+#             owner.save()
+#         todo.owner = owner
+#         todo.save()
+#         return redirect('/')
+#     return render(req, f'todo_app/{template_name}.html', {'form': form})
+#
+#
+# def create_todo(request):
+#     return persist(request, TodoForm(), 'create')
+#
+#
+# def edit_task(request, pk):
+#     return persist(request, Todo.objects.get(pk=pk), 'edit')
 
 
 def log_in(request):

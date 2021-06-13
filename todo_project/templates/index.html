@@ -1,6 +1,6 @@
 {% load static %}
 
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <link href="{% static 'css/main.css' %}" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
@@ -11,8 +11,8 @@
 <body>
     <h1>My Todo List</h1>
     <div>
-    <h1>
-         <form method="post" action="{% url 'creat task'%}">
+    <h2>
+         <form method="get" action="{% url 'creat task'%}">
         {% csrf_token %}
 {#        {{ todo_form.as_p}}#}
 {#        <small id="title_help" class="form-text text-muted">Enter task title</small>#}
@@ -41,20 +41,23 @@
 {#        </label>#}
     <button class="button3">Creat new task...</button>
     </form>
-    </h1>
+    </h2>
     </div>
     {% if todos %}
         <div class="container-xxl">
         {% for todo in todos %}
+        <li>
         <div class="todo">
-        <h2 class="todo-title collapse-toggle">Title: {{ todo.title }}</h2>
-        <h3 class="collapsable">{{ todo.owner }}</h3>
-        <h3 class="collapsable">Start date: {{ todo.stat_date }}</h3>
+        <button type="button" class="collapsible button3">Title: {{ todo.title }}</button>
+            <div class="content">
+        <h3>{{ todo.owner }}</h3>
+        <h3>Start date: {{ todo.stat_date }}</h3>
         <h4>
-            <p class="todo-description collapsable">
+            <p>
                 Description: {{ todo.description }}
             </p>
         </h4>
+            </div>
         <form method="post" action="/todo-change-state/{{ todo.id }}">
         {% csrf_token %}
         {% if todo.is_done %}
@@ -62,21 +65,21 @@
             <label>
                 <input type="hidden" name="is_done" value="false" />
             </label>
-            <button class="button2">Change</button>
-            <button ><a class="button2" href="/edit/{{ todo.id }}">Edit</a></button>
-            <button ><a class="button1" href="/todos-dell/{{ todo.id }}">Dell</a></button>
+           <button class="button2"><a class="button2">Change</a></button>
+            <button class="button2"><a class="button2" href="/edit/{{ todo.id }}">Edit</a></button>
+            <button class="button1"><a class="button1" href="/todos-dell/{{ todo.id }}">Dell</a></button>
         {% else %}
             <div class="open">NOT DONE</div>
             <label>
                 <input type="hidden" name="is_done" value="true" />
             </label>
-            <button class="button2">Change</button>
-            <button ><a class="button2" href="/edit/{{ todo.id }}">Edit</a></button>
-            <button ><a class="button1" href="/todos-dell/{{ todo.id }}">Dell</a></button>
+            <button class="button2"><a class="button2">Change</a></button>
+            <button class="button2"><a class="button2" href="/edit/{{ todo.id }}">Edit</a></button>
+            <button class="button1"><a class="button1" href="/todos-dell/{{ todo.id }}">Dell</a></button>
         {% endif %}
         </form>
-
         </div>
+        </li>
         {% endfor %}
         </div>
     {% else %}

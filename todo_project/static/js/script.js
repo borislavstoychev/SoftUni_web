@@ -1,44 +1,14 @@
-function expandCollapse() {
-    if (this.parentElement.className.indexOf('collapsed') < 0){
-        this.parentElement.className += 'collapsed';
+let coll = document.getElementsByClassName("collapsible");
+let i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+      let content = this.nextElementSibling;
+      if (content.style.display === "block") {
+      content.style.display = "none";
     } else {
-        this.parentElement.className = this.parentElement.className.replace('collapsed', "");
+      content.style.display = "block";
     }
+  });
 }
-
-function initExpand() {
-    const items = [...document.getElementsByClassName('collapse-toggle')];
-    items.forEach(item => {
-        item.addEventListener('click', expandCollapse);
-    });
-}
-
-initExpand();
-
-
-// function expandCollapse() {
-//     let collapseContainer = this.parentElement;
-//     while (this) {
-//         if (collapseContainer.className.indexOf('collapse-container') >= 0) {
-//             break;
-//         }
-//
-//         collapseContainer = collapseContainer.parentElement;
-//     }
-//
-//     if (collapseContainer.className.indexOf('collapsed') < 0) {
-//         this.parentElement.className += ' collapsed';
-//     } else {
-//         collapseContainer.className =
-//             this.parentElement.className.replace('collapsed', '');
-//     }
-// }
-//
-// function initExpand() {
-//     const items = [...document.getElementsByClassName('collapse-toggle')];
-//     items.forEach(item => {
-//         item.addEventListener('click', expandCollapse);
-//     });
-// }
-//
-// initExpand();

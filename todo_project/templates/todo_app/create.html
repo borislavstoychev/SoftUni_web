@@ -12,15 +12,16 @@
 </head>
 <body>
 <h1 class="header">Fill out the form!</h1>
+    {{ form.errors }}
 <div class="container">
-    <h1>
+    <h2>
     <form method="post" class="form-message">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" class="btn btn-primary" value='Submit'>
-        <a class="btn btn-primary" href="{% url 'main' %}">Return</a>
+        {{ form.as_p }}
+        <input type="submit" class="button" value='Submit'>
+        <a class="button3" href="{% url 'main' %}">Return</a>
     </form>
-    </h1>
+    </h2>
 </div>
 </body>
 </html>
