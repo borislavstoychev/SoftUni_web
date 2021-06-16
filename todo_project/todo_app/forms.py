@@ -1,6 +1,6 @@
 from django.core.validators import EmailValidator
 from django.forms import Form, CharField, HiddenInput, Textarea, ValidationError, IntegerField, NumberInput, \
-    EmailField, EmailInput, PasswordInput
+    EmailField, EmailInput, PasswordInput, ChoiceField, RadioSelect, Select
 import re
 
 
@@ -37,3 +37,19 @@ class FormName(Form):
     password = CharField(widget=PasswordInput, validators=[check_for_pass])
     text = CharField(widget=Textarea)
     bot_catcher = CharField(required=False, widget=HiddenInput, max_length=0, validators=[clean_bot_catcher])
+
+
+class StateFilterForm(Form):
+    DONE = 'D'
+    NOT_DONE = 'N'
+    ALL = 'A'
+    CHOICES = [
+            (ALL, 'all'),
+            (NOT_DONE, 'not-done'),
+            (DONE, 'done')
+        ]
+    state = ChoiceField(
+        required=False,
+        choices=CHOICES,
+        widget=Select(attrs={'style': 'width:10%; font-size: 20px; background-color: rgba(44,44,46,0.89); border-radius: 10px; color: white'})
+    )

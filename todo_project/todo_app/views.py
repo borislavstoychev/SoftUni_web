@@ -2,18 +2,20 @@ from django.forms import CharField, Textarea
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from todo_app.forms import TodoForm, FormName
+from todo_app.forms import TodoForm, FormName, StateFilterForm
 from todo_app.models import Todo, Person
+from todo_app.services import TodosService
 
 
-def index(request, form=None, form_action='create task', pk=None):
-    if not form:
-        form = TodoForm()
+def index(request):
+    filter_form = StateFilterForm(request.GET)
+    filter_form.is_valid()
+    state = filter_form.cleaned_data['state']
+    service = TodosService(state)
+
     context = {
-        'todos': Todo.objects.all().order_by('is_done'),
-        'todo_form': form,
-        'form_action': form_action,
-        'pk': pk,
+        'filter_form': filter_form,
+        'todos': service.get_by_state(),
     }
 
     return render(request, 'index.html', context)

@@ -41,6 +41,11 @@
 {#        </label>#}
     <button class="button3">Creat new task...</button>
     </form>
+     <form method="get">
+        {% csrf_token %}
+        {{ filter_form.as_p }}
+    <button class="button2">Sort by state..</button>
+    </form>
     </h2>
     </div>
     {% if todos %}
