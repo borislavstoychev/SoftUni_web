@@ -20,7 +20,7 @@ class TestCreate(TestCase):
             'description': 'new',
             'author_phone': '0878799823',
             'author_name': 'Borcho',
-            }
+        }
         response = self.test_client.post(reverse('create'), data=data_obj)
 
         self.assertRedirects(response, reverse('index'))
@@ -42,7 +42,7 @@ class TestCreate(TestCase):
             'description': 'new',
             'author_phone': '0878799823kjjhjk',
             'author_name': 'Borcho',
-            }
+        }
         try:
             response = self.test_client.post(reverse('create'), data=data_obj)
         except DataError:
@@ -64,7 +64,7 @@ class TestCreate(TestCase):
         )
         [post.save() for post in all_posts]
         data = all_posts[0].id
-        response = self.test_client.post(reverse(f'edit:{data}'), pk=data)
+        response = self.test_client.post(reverse(f'edit\{data}'), pk=data)
         self.assertTemplateUsed(response, 'index.html')
         form = response.context['post_form']
         self.assertIsNotNone(form)
