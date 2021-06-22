@@ -1,37 +1,17 @@
-{% load static %}
-
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <title>Expenses Tracker</title>
-</head>
-
-<body>
-    
-<nav>
-    <ul>
-        <li class="img"><img src="{% static 'images/dollar.png' %}"></li>
-        <li><a href="/">Expenses Tracker</a></li>
-        
-        <li class="right"><a href="/profile">Profile</a></li>
-        
-    </ul>
-</nav>
+{% extends 'shared/main.html' %}
+{% block site_content %}
     <div class="body">
-        
-
 <div>
+    {% if expenses %}
     <h1>Summary</h1><h1>
     <ul class="expenses-list">
-    <li class="blue">1500$</li>
-    
-        <li class="red"> - 1000.0$</li>
-    
-        <li class="red"> - 400.0$</li>
-    
-    <li class="green">= 100.0$ left</li>
+        <li class="blue"> - {{ profile.budget }}</li>
+        {% for expense in expenses %}
+            <li class="red"> - {{ expense.price }}.0$</li>
+        {% endfor %}
+    <li class="green">= {{ profile.budget_left }} left</li>
     </ul>
+    {% endif %}
 </h1></div>
 
 <h1>My Expenses</h1>
@@ -46,7 +26,7 @@
             <p>{{ expense.description }}</p>
             <div class="expense-detail">
             <div>
-                <p>{{ expense.price }}</p>
+                <p>{{ expense.price }}$</p>
             </div>
             <div class="right">
                 <a class="button edit" href="{% url 'edit expense page' expense.id %}">Edit</a>
@@ -72,11 +52,5 @@
 {#    </div>#}
 {#</div>#}
 </div>
-
     </div>
-    <footer>
-    <div>Python Web Basics Exam Preparation @SoftUni</div>
-</footer>
-
-
-</body></html>
+{% endblock %}
