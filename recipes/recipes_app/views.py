@@ -33,8 +33,11 @@ def edit_recipes(request, pk):
 
 def delete_recipes(request, pk):
     recipe = Recipe.objects.get(pk=pk)
+    form = RecipeForm(instance=recipe)
+    for (_, field) in form.fields.items():
+        field.widget.attrs['disabled'] = True
     if request.method == 'GET':
-        return render(request, 'delete.html', {'form': RecipeForm(instance=recipe), 'recipe': recipe})
+        return render(request, 'delete.html', {'form': form, 'recipe': recipe})
     recipe.delete()
     return redirect("home page")
 
