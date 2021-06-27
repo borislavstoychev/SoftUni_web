@@ -19,7 +19,7 @@ def creat_profile(request):
     new_profile = ProfileForm(request.POST)
     if new_profile.is_valid():
         new_profile.save()
-        return redirect('profile page')
+        return redirect('home page')
     return render(request, 'home-no-profile.html', {'form': new_profile})
 
 
