@@ -1,0 +1,5 @@
+SELECT *
+
+FROM owner
+
+ORDER BY age DESC
