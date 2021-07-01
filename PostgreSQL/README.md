@@ -17,7 +17,7 @@
     • When deleting a cat or dog, their records from the rooms should also be deleted
     • When deleting an owner, the corresponding pets should also be deleted
     • When deleting a hotel, the corresponding rooms should also be deleted
-##     1. Insert
+##     1. Insert - [Solution](https://github.com/borislavstoychev/SoftUni_web/blob/main/PostgreSQL/insert.sql)
 ## Let us insert some data into the tables
 ### Pet Owners
 
@@ -66,27 +66,27 @@ room_id  | cat_id  | hotel_id  | register_date  | unregister_date
 2 | 2 | 2 | '2020-06-10' | '2020-06-15'
 3  | 3 | 2 | '2020-06-20' | '2020-06-23'
 
-##    2. Select
+##    2. Select - [Solution](https://github.com/borislavstoychev/SoftUni_web/blob/main/PostgreSQL/select.sql)
 Select all the information from the dog_room table
 
 ![1](https://user-images.githubusercontent.com/67734870/124122930-51064800-da7f-11eb-8898-494e4cb607fd.png)
 
-##    3. Where
+##    3. Where - [Solution](https://github.com/borislavstoychev/SoftUni_web/blob/main/PostgreSQL/where.sql)
 Select only the ids of the cats that are in rooms from the hotel with id=2
 
 ![1](https://user-images.githubusercontent.com/67734870/124123000-6a0ef900-da7f-11eb-8b60-fd606ff058b0.png)
 
-##    4. Sort
+##    4. Sort - [Solution](https://github.com/borislavstoychev/SoftUni_web/blob/main/PostgreSQL/sort.sql)
 Sort all the pet owners by age in descending
 
 ![1](https://user-images.githubusercontent.com/67734870/124123077-827f1380-da7f-11eb-91aa-16bda1d39353.png)
 
-##    5. Count
+##    5. Count - [Solution](https://github.com/borislavstoychev/SoftUni_web/blob/main/PostgreSQL/count.sql)
 Get the count of all cats that are of age 3 or older
 
 ![1](https://user-images.githubusercontent.com/67734870/124123131-94f94d00-da7f-11eb-872f-10a700609254.png)
 
-##    6. Delete
+##    6. Delete - [Solution](https://github.com/borislavstoychev/SoftUni_web/blob/main/PostgreSQL/delete.sql)
 Delete all cats and dogs, that are of age 2 or less
 
 ![1](https://user-images.githubusercontent.com/67734870/124123180-a80c1d00-da7f-11eb-9e34-57f743ae7b38.png)
