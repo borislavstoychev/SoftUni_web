@@ -3,7 +3,7 @@
 
 ![1](https://user-images.githubusercontent.com/67734870/124132128-291be200-da89-11eb-9dfd-5abf15ca21c5.png)
 
-##You are provided with a working project. Refactor all the templates, so you use template inheritance
+## You are provided with a working project. Refactor all the templates, so you use template inheritance
 ### Tips
     • Create a separate folder called common. In the folder create two separate files for the header and the footer (header.html and footer.html)
     • Create a file called base.html in which the header and the footer templates are included and create a block called content
