@@ -18,7 +18,7 @@ class Pet(models.Model):
     name = models.CharField(max_length=7)
     age = models.PositiveIntegerField(blank=False)
     description = models.TextField(blank=False)
-    image_url = models.URLField(blank=False)
+    image = models.ImageField(upload_to='images/pets')
 
     def __str__(self):
         return f"{self.type} {self.name}, Age: {self.age}"

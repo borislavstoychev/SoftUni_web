@@ -212,5 +212,24 @@ localhost:8000/pets/delete/<int:pk>
 ![1](https://user-images.githubusercontent.com/67734870/122684781-41ca0380-d210-11eb-8b5f-f9745c6e3f54.png)
 
 
+# Workshop: Petstagram
+##    1. Part IV – Template Inheritance and Media Files
+### Modifying the Pet Model
+Modify the Pet model, so the image field is not a URL, but a file and make migrations to the database
+### Modifying the Forms
+Modify the form of the pet, so the field is a file field
+### Modifying the Views
+Modify the edit and create views, so they save the pet photos in the media folder
+### Modifying the Templates
+Separate the main parts of your templates, so you use template inheritance and make the changes needed to display the images correctly
+### Results
+
+![1](https://user-images.githubusercontent.com/67734870/124760163-20b82100-df39-11eb-9612-16dcea6aa5c4.png)
+
+![1](https://user-images.githubusercontent.com/67734870/124760229-33325a80-df39-11eb-99df-c0e102a09cd7.png)
+
+![1](https://user-images.githubusercontent.com/67734870/124760295-4513fd80-df39-11eb-8e48-b2eaf19bf44f.png)
+
+![1](https://user-images.githubusercontent.com/67734870/124760360-578e3700-df39-11eb-9ee5-99d5c31b8d3b.png)
 
 
