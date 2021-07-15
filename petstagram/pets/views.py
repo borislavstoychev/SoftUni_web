@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from common.forms import CommentForm
 from common.models import Comment
-from pets.forms import PetCreateForm
+from pets.forms import PetCreateForm, EditPetForm
 from pets.models import Pet, Like
 
 
@@ -46,12 +46,13 @@ def like_pet(request, pk):
     return redirect('pet details', pk)
 
 
-def persist(request, pet, template):
+def persist(request, pet, template, form=None):
     if request.method == "GET":
         form = PetCreateForm(instance=pet)
         return render(request, template, {'form': form})
     else:
-        form = PetCreateForm(request.POST, request.FILES, instance=pet)
+        if not form:
+            form = PetCreateForm(request.POST, request.FILES, instance=pet)
         if form.is_valid():
             form.save()
             return redirect('pet details', pet.pk)
@@ -66,7 +67,8 @@ def create(request):
 
 def edit(request, pk):
     pet = Pet.objects.get(pk=pk)
-    return persist(request, pet, 'pet_edit.html')
+    form = EditPetForm(request.POST, request.FILES, instance=pet)
+    return persist(request, pet, 'pet_edit.html', form)
 
 
 def delete(request, pk):
