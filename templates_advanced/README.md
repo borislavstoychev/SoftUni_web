@@ -75,3 +75,46 @@ class PythonCreateForm(forms.ModelForm):
 ### And the home page should look like this:
 
 ![1](https://user-images.githubusercontent.com/67734870/124674239-06436080-dec3-11eb-9857-e63cfd627bec.png)
+
+
+# Lab: Authentication
+## Pythons Wiki (with Authentication)
+Extend the pythons wiki project, so it has very simple authentication. 
+##    1. Create User group
+Create a group called 'User' with the following permissions
+
+![1](https://user-images.githubusercontent.com/67734870/125804554-fc41ec15-27e4-4c73-8cac-d359f6e25c5a.png)
+
+##    2. Create User
+Since we don't know how to create register forms yet, create your own user that is in the 'User' group using the django admin
+
+![1](https://user-images.githubusercontent.com/67734870/125804665-5d2d8e74-9a1a-4776-ba28-6d4d7046ada9.png)
+
+##    3. Add Login and Logout
+In the nav bar, implement some logic in the template, so when a user is not logged in (user is Anonymous), a Login link is displayed. Otherwise display 'Welcome {username}' and a Logout link
+## Not Logged In
+
+![1](https://user-images.githubusercontent.com/67734870/125804799-b32f7cc7-54fe-4b1e-b0c4-8bcbe2478be2.png)
+
+## Logged In
+
+![1](https://user-images.githubusercontent.com/67734870/125804915-112f23ec-f04f-42a0-94b5-26cdbf8bcd7c.png)
+
+##    4. Login and Logout View
+Implement the login view, so the user you created logs in (use his credentials)
+
+![1](https://user-images.githubusercontent.com/67734870/125805020-3b9d4ecf-7f50-493a-a1e6-e659875068ce.png)
+
+Implement the logout logic, so the currently logged user logs out and redirect to the home page
+
+![1](https://user-images.githubusercontent.com/67734870/125805102-170a9881-a5e3-495a-9a64-299116d39289.png)
+
+##    5. Group Restrictions
+Implement your own decorator function that allows only users from the group 'User' or superusers to access the create python page. If the user does not belong to those groups, create your own 401 page like in the example below
+Not Logged In
+
+![1](https://user-images.githubusercontent.com/67734870/125805248-78a0d846-aeac-4fe8-bc73-dddfbe0a07fa.png)
+
+Logged In
+
+![1](https://user-images.githubusercontent.com/67734870/125805353-0ab443d8-dd32-45e2-a29b-e1f1787a6953.png)
