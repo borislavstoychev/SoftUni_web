@@ -6,12 +6,13 @@ from django.shortcuts import render, redirect
 from templates_advanced.pythons_auth.forms import SignUpForm, SignInForm
 
 
-def sign_up(request):
+def register(request):
     if request.POST:
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('sign in')
+            user = form.save()
+            login(request, user)
+            return redirect('index')
 
     else:
         form = SignUpForm()
