@@ -1,3 +1,4 @@
+{% load profile_complete_notification %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,9 @@
 </head>
 <body>
 {% include 'common/header.html' %}
-
+{% if user.is_authenticated %}
+    {% profile_complete_notification %}
+{% endif %}
 {% block content %}
 {% endblock %}
 

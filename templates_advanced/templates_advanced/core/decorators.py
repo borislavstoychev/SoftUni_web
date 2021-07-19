@@ -24,3 +24,5 @@ def any_group_required(groups=None):
         return wrapper
 
     return decorator
+
+

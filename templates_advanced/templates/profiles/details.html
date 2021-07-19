@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center">{{ request.user }}</h1>
+    <div class="card m-3" style="width: 18rem;">
+        {% if profile.profile_image %}
+            <img class="card-img-top" src="{{ profile.profile_image.url }}" alt="Card image cap">
+        {% endif %}
+    </div>
+    <form class="col-lg-6 offset-lg-3" action="{% url 'profile details' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-primary mt-3">Save</button>
+    </form>
+{% endblock %}
+{#{% block content %}#}
+{#    <h1 class="text-center">{{ request.user }}</h1>#}
+{#    <form class="col-lg-6 offset-lg-3" action="{% url 'profile details' %}" method="post" enctype="multipart/form-data">#}
+{#        {% csrf_token %}#}
+{#        <div class="form-group">#}
+{#            <label for="name">First Name</label>#}
+{#            {{ form.first_name }}#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <label for="description">Last Name</label>#}
+{#            {{ form.last_name }}#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <label for="description">Age</label>#}
+{#            {{ form.age }}#}
+{#        </div>#}
+{#        <div class="custom-file">#}
+{#            <label class="custom-file-label" for="profile_image">Choose Image File</label>#}
+{#            {{ form.profile_image }}#}
+{#        </div>#}
+{#        <button class="btn btn-primary mt-3">Save</button>#}
+{#    </form>#}
+{#{% endblock %}#}

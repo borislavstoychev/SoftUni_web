@@ -12,18 +12,6 @@ def index(req):
     return render(req, 'index.html', {'pythons': pythons})
 
 
-def login_view(request):
-    user = authenticate(request, username='Bobby', password='bobby900729')
-    if user:
-        login(request, user)
-        return redirect('index')
-
-
-def logout_view(request):
-    logout(request)
-    return redirect('index')
-
-
 @any_group_required(groups=['User'])
 def create(req):
     if req.method == 'GET':
