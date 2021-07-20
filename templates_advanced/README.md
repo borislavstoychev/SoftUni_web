@@ -118,3 +118,23 @@ Not Logged In
 Logged In
 
 ![1](https://user-images.githubusercontent.com/67734870/125805353-0ab443d8-dd32-45e2-a29b-e1f1787a6953.png)
+
+
+# Lab: Login and Register
+Pythons Wiki (with Login and Register Forms)
+Extend the pythons wiki project, so you have pages for registration and login with forms. 
+##    1. Registration Form
+For the registration view, you can use the form UserCreationForm 'from django.contrib.auth.forms import UserCreationForm'. For the form in the template, you can use bootstrap4 (pip install django-bootstrap4)
+
+![1](https://user-images.githubusercontent.com/67734870/126319558-d5398da4-5e5c-45ab-97a4-3c4599916d6e.png)
+
+![1](https://user-images.githubusercontent.com/67734870/126319671-efe2ae2e-ef0e-4dbb-8587-920ff2ec41a7.png)
+
+Upon registration, you should add the user to the group 'User', so he can create pythons
+ ##   2. Login
+Create a login form with username and password and use it in your view. You can again use bootstrap4 to add styling to you form in the template
+
+![1](https://user-images.githubusercontent.com/67734870/126319729-132e3739-2dba-4492-84f1-40e4ca0baf81.png)
+
+##    3. Extending the User Model
+Create a Profile Model, which should extend the User Profile (add pictureUrl, description and website).
