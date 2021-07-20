@@ -15,6 +15,8 @@ from os.path import join
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.urls import reverse_lazy
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'petstagram',
     'pets',
+    'accounts'
 
 ]
 
@@ -143,3 +146,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# LOGIN_URL = reverse_lazy('sign in')
+# LOGOUT_URL = reverse_lazy('sign out')
+
+AUTH_USER_MODEL = 'accounts.PetstagramUser'

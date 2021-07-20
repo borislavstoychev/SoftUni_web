@@ -56,7 +56,7 @@ class PetCreateForm(forms.ModelForm):
 
     class Meta:
         model = Pet
-        fields = "__all__"
+        exclude = ('user', )
 
 
 class EditPetForm(PetCreateForm):
