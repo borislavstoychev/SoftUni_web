@@ -233,3 +233,47 @@ Separate the main parts of your templates, so you use template inheritance and m
 ![1](https://user-images.githubusercontent.com/67734870/124760360-578e3700-df39-11eb-9ee5-99d5c31b8d3b.png)
 
 
+# Workshop: Petstagram
+##    1. Part V – Users
+Creating 'accounts' app
+Create a new app called 'accounts', where the registration, login, logout and user profiles will be handled
+### UserProfile model
+### In the new app create an UserProfile model with the following fields:
+    • user – foreign key to the user
+    • profile_picture – picture upload
+### New url's
+### Add the following urls:
+    • GET 'localhost:8000/accounts/' – include the django.contrib.auth.urls
+    • GET 'localhost:8000/accounts/profile/<int:pk>' – create a view that will render the provided 'user_profile.html' with the needed information
+    • POST 'localhost:8000/accounts/profile/<int:pk>' – update the profile picture of the user
+    • GET 'localhost:8000/accounts/signup' – render the provided 'signup.html' with the register form
+    • POST 'localhost:8000/accounts/signup' – register the user and create a user profile (with the default.png as profile picture)
+### Modifying old models
+    • Pet model – add a new field called user which is linked to an UserProfile
+    • Comment model – add a new field called user which is linked to an UserProfile
+    • Like model - add a new field called user which is linked to an UserProfile
+### Modifying old templates
+    • Add login/logout/register links in the navbar and implement the needed template logic
+    • In the pet_detail template, implement the logic, so the edit and delete buttons are visible only in the pet belongs to the user. If not, display the 'heart' button (filled if the user has liked the pet already, not filled if the user has not yet liked this pet). Display the comment form if the pet does not belong to the user.
+### Restrictions
+Only logged in users can view and create pet photos.
+### Results
+Current user is not an owner and has not yet liked this photo. The user can also comment the photo
+
+![1](https://user-images.githubusercontent.com/67734870/126627879-45fef289-38c6-4403-bd42-7d62084f2c5a.png)
+
+After the user has liked the photo:
+
+![1](https://user-images.githubusercontent.com/67734870/126627942-98fda765-ec26-4297-a8e3-fd693347292e.png)
+
+The owner cannot like his photo and cannot post comments. He can edit/delete his pet photo
+
+![1](https://user-images.githubusercontent.com/67734870/126628001-6c9d8d5d-82e9-429f-9111-2a9e704b7d42.png)
+
+User profile
+
+![1](https://user-images.githubusercontent.com/67734870/126628062-51a8eb3a-f27c-4d51-9746-af702e7e2462.png)
+
+
+
+
