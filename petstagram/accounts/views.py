@@ -46,7 +46,7 @@ def sign_out(request):
     return redirect('landing')
 
 
-@login_required
+@login_required(login_url='sign in user')
 def profile_details(request):
     profile = Profile.objects.get(pk=request.user.id)
     user_pets = Pet.objects.filter(user_id=request.user.id)

@@ -3,9 +3,9 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from common.forms import CommentForm
+from core.decorators import can_like, can_delete_or_edit
 from pets.forms import PetCreateForm, EditPetForm
 from pets.models import Pet, Like
-
 
 
 def pet_all(request):
@@ -15,6 +15,7 @@ def pet_all(request):
     return render(request, "pet_list.html", context)
 
 
+@login_required(login_url='sign in user')
 def pet_detail(request, pk):
     pet = Pet.objects.get(pk=pk)
     pet.likes_count = pet.like_set.count()
@@ -34,7 +35,7 @@ def pet_detail(request, pk):
     return render(request, 'pet_detail.html', context)
 
 
-@login_required
+@login_required(login_url='sign in user')
 def comment_pet(request, pk):
     form = CommentForm(request.POST)
     if form.is_valid():
@@ -45,6 +46,7 @@ def comment_pet(request, pk):
     return redirect('pet details', pk)
 
 
+@can_like(Pet)
 def like_pet(request, pk):
     pet = Pet.objects.get(pk=pk)
     like_object_by_user = pet.like_set.filter(user_id=request.user.id) \
@@ -74,18 +76,20 @@ def persist(request, pet, template, form=None):
         return render(request, template, {'form': form})
 
 
-@login_required
+@login_required(login_url='sign in user')
 def create(request):
     pet = Pet()
     return persist(request, pet, 'pet_create.html')
 
 
+@can_delete_or_edit(Pet)
 def edit(request, pk):
     pet = Pet.objects.get(pk=pk)
     form = EditPetForm(request.POST, request.FILES, instance=pet)
     return persist(request, pet, 'pet_edit.html')
 
 
+@can_delete_or_edit(Pet)
 def delete(request, pk):
     pet = Pet.objects.get(pk=pk)
     if request.method == "GET":
