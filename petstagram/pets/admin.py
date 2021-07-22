@@ -13,5 +13,5 @@ class Pets(admin.ModelAdmin):
         return False
 
 
-admin.site.register(models.Pet, Pets)
+admin.site.register(models.Pet)
 admin.site.register(models.Like)

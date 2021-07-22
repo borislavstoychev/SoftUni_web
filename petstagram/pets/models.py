@@ -38,3 +38,6 @@ class Like(models.Model):
         on_delete=models.CASCADE,
     )
 
+from .signals import *
+
+
