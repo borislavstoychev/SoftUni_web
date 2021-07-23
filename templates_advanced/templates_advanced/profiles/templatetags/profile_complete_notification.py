@@ -11,4 +11,6 @@ def profile_complete_notification(context):
     profile = Profile.objects.get(pk=user_id)
     return {
         'is_complete': profile.is_complete,
+        'user_id': user_id
+
     }

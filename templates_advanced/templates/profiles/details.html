@@ -7,7 +7,7 @@
             <img class="card-img-top" src="{{ profile.profile_image.url }}" alt="Card image cap">
         {% endif %}
     </div>
-    <form class="col-lg-6 offset-lg-3" action="{% url 'profile details' %}" method="post" enctype="multipart/form-data">
+    <form class="col-lg-6 offset-lg-3" action="{% url 'profile details' user.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
         <button class="btn btn-primary mt-3">Save</button>
