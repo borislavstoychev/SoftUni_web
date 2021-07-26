@@ -22,3 +22,13 @@ def check_is_complete(sender, instance, **kwargs):
         instance.is_complete = True
     else:
         instance.is_complete = False
+
+    if instance.pk:
+        try:
+            old_avatar = Profile.objects.get(pk=instance.pk).profile_image
+        except Profile.DoesNotExist:
+            return
+        else:
+            new_avatar = instance.profile_image
+            if old_avatar and old_avatar.url != new_avatar.url:
+                old_avatar.delete(save=False)

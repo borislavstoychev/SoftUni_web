@@ -20,7 +20,7 @@ class IndexView(ListView):
     template_name = 'index.html'
     model = Python
     context_object_name = 'pythons'
-    paginate_by = 5
+    paginate_by = 7
 
 
 # @any_group_required(groups=['User'])
