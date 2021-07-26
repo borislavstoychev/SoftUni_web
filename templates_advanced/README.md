@@ -138,3 +138,45 @@ Create a login form with username and password and use it in your view. You can 
 
 ##    3. Extending the User Model
 Create a Profile Model, which should extend the User Profile (add pictureUrl, description and website).
+
+
+# Lab: Intro to Class-Based-Views
+Pythons Wiki (refactoring)
+Refactor some of your views to be class based as shown below 
+##    1. Index View
+Refactor the index view by using the propriate CBV (for example ListView, since we are going to display all the pythons)
+views.py
+
+![1](https://user-images.githubusercontent.com/67734870/126980324-c4ae5f60-809e-48bb-aac6-f668641c735e.png)
+
+urls.py
+
+![1](https://user-images.githubusercontent.com/67734870/126980403-5fe9610c-4ee4-4fca-bf3b-65887711fe93.png)
+
+##    2. Create Python View
+For the create python view we can use the FormView and since we also need to allow only users of the group 'User', we can implement a special mixin
+mixins.py
+
+![1](https://user-images.githubusercontent.com/67734870/126980466-ef66ab22-ab1d-45f1-a724-d8bfb7da36a6.png)
+
+views.py
+
+![1](https://user-images.githubusercontent.com/67734870/126980539-5cabf18b-2b60-41e7-bfd9-b45263792364.png)
+
+urls.py
+
+![1](https://user-images.githubusercontent.com/67734870/126980614-adc79ec8-567f-46f4-aa7c-2fd7b3a171b3.png)
+
+##    3. Register View
+For the register view we can use the CreateView
+views.py
+
+
+![1](https://user-images.githubusercontent.com/67734870/126980666-b207fc37-33d0-426c-b9e6-de428afd6111.png)
+
+urls.py
+
+![1](https://user-images.githubusercontent.com/67734870/126980736-d7f16ef4-ddd4-4479-9807-0e8f81739c2f.png)
+
+
+
